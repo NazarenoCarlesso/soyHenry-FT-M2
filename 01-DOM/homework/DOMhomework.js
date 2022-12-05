@@ -16,9 +16,12 @@
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
-function ToDo (description) {
+class ToDo {
   // Tu código acá:
-  
+  constructor(description) {
+    this.description = description
+    this.complete = false;
+  }
 }
 
 
@@ -49,6 +52,15 @@ function ToDo (description) {
 
 function buildToDo(todo, index) {
   // Tu código acá:
+  const toDoShell = document.createElement('div');
+  toDoShell.classList.add('toDoShell');
+  const toDoText = document.createElement('span');
+  toDoText.innerHTML = todo.description;
+  toDoText.id = index;
+  toDoText.addEventListener('click', completeToDo);
+  if (todo.complete) toDoText.classList.add('completeText');
+  toDoShell.appendChild(toDoText);
+  return toDoShell;
 }
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
@@ -58,6 +70,9 @@ function buildToDo(todo, index) {
 
 function buildToDos(toDos) {
   // Tu código acá:
+  let array = [];
+  toDos.map((todo, index) => array.push(buildToDo(todo, index)));
+  return array;
 }
 
 // La función 'displayToDos' se va a encargar de que se vean los toDo's en pantalla
@@ -71,6 +86,12 @@ function buildToDos(toDos) {
 
 function displayToDos() {
   // Tu código acá:
+  const toDoContainer = document.getElementById('toDoContainer');
+  toDoContainer.innerHTML = '';
+  const todos = buildToDos(toDoItems);
+  todos.forEach(todo => {
+    toDoContainer.appendChild(todo);
+  });
 }
 
 // La función 'addToDo' agregará un nuevo ToDo al array 'toDoItems'
@@ -84,7 +105,10 @@ function displayToDos() {
 
 function addToDo() {
   // Tu código acá:
- 
+  const input = document.getElementById('toDoInput');
+  toDoItems.push(new ToDo(input.value));
+  input.value = '';
+  displayToDos();
 }
 
 // Agregar un 'Event Listener' para que cada vez que el botón 'AGREGAR' sea clickeado
@@ -94,7 +118,8 @@ function addToDo() {
 
 // Tu código acá:
 
-
+const button = document.getElementById('addButton');
+button.addEventListener('click', addToDo);
 
 // La función completeToDo se va a ejecutar cuando queramos completar un todo
 // [NOTA: Algunas cuestiones a tener en cuenta
@@ -110,10 +135,19 @@ function addToDo() {
 
 function completeToDo(event) {
   // DESCOMENTAR LA SIGUIENTE LINEA
-  //const index = event.target.id;
+  const index = event.target.id;
   // Tu código acá:
-  
+  // this.complete = true; // pasa el test
+  toDoItems[index].complete = true;
+  displayToDos();
 }
+
+ToDo.prototype.completeToDo = completeToDo;
+
+var toDoItems = [];
+toDoItems.push(new ToDo('Cepillarse los dientes'));
+toDoItems.push(new ToDo('Lavarse la cara'));
+toDoItems.push(new ToDo('Code Review de soyHenry'));
 
 // Una vez que llegaste a este punto verificá que todos los tests pasen
 
@@ -133,6 +167,7 @@ function completeToDo(event) {
 
 // Acá debes insertar la llamada a 'displayToDos'
 
+displayToDos();
 
 // ---------------------------- NO CAMBIES NADA DE ACÁ PARA ABAJO ----------------------------- //
 if (typeof module !== 'undefined') {

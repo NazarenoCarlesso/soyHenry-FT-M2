@@ -37,7 +37,7 @@ describe('Clase ToDo', () => {
      expect(typeof ToDo.prototype.completeToDo).toBe('function');
   });
 
-  it('El método completeToDo camabia el atributo \'complete\' to true', () => {
+  it('El método completeToDo cambia el atributo \'complete\' to true', () => {
     newToDo.completeToDo();
     expect(newToDo.complete).toBe(true);
   });
@@ -82,7 +82,7 @@ describe('Functión addToDo', () => {
   });
 
   it('Agrega un ToDo al array \'toDoItems\'', () => {
-    document.querySelector('#toDoInput').value = 'Creae nuevo ToDo';
+    document.querySelector('#toDoInput').value = 'Crear nuevo ToDo';
     addToDo();
     expect(toDoItems.length).toBeGreaterThan(0);
   });
