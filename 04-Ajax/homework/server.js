@@ -51,6 +51,8 @@ let amigos = [
 app.use(cors());
 app.use(bodyParser.json());
 
+app.use(express.static(__dirname));
+
 app.get("/amigos", (req, res) => {
   res.status(200).json(amigos);
 });
