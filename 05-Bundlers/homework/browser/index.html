@@ -1,14 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset=UTF-8>
     <link href="style.css" type="text/css" rel="stylesheet">
 </head>
-
 <body>
     <canvas id="paint"></canvas>
-
     <div id="color-selector">
         <div class="marker selected" id="black"></div>
         <div class="marker" id="purple"></div>
@@ -19,11 +16,9 @@
         <div class="marker" id="yellow"></div>
         <div class="marker" id="brown"></div>
     </div>
-
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     <script src="event-emitter.js"></script>
     <script src="whiteboard.js"></script>
-    <script src="app.js"></script>
+    <script src="bundle.js"></script>
 </body>
-
 </html>

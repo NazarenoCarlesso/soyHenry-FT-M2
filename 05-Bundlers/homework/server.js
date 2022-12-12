@@ -21,7 +21,7 @@ server.listen(1337, function () {
 app.use(express.static(path.join(__dirname, 'browser')));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'browser/index.html'));
 });
 
 io.on('connection', function (socket) {
