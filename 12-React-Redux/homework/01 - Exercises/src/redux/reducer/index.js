@@ -20,7 +20,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         case GET_STORE_NAME:
             return {
                 ...state,
-                storeName: payload.name
+                storeName: payload
             }
         default:
             return {

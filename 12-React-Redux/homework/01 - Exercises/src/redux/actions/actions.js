@@ -17,13 +17,15 @@ const deleteProduct = (id) => {
 }
 
 const getStoreName = () => {
-    return axios.get("http://localhost:3001/store").then((response) => {
-        console.log(response)
-        return {
-            type: GET_STORE_NAME,
-            payload: response
-        }
-    })
+    return async function (dispatch) {
+        return axios.get("http://localhost:3001/store")
+            .then(res => {
+                dispatch({
+                    type: GET_STORE_NAME,
+                    payload: res.data.name
+                })
+            })
+    }
 }
 
 export { addProduct, deleteProduct, getStoreName }

@@ -10,18 +10,15 @@ export function Products({ list, storeName, getStoreName }) {
    React.useEffect(() => { if (getStoreName) getStoreName() }, [])
 
    return (
-      <>
-         <h1>{ storeName }</h1>
-         <div className='productsBg'>
-            <h1 className='productsTl'>HENRY MARKET</h1>
-            <div className='productsList'>
-               {
-                  /* ¡Renderiza aquí todas tus cards! */
-                  list.map((product, index) => { return <Card key={index} name={product.name} price={product.price} id={product.id} /> })
-               }
-            </div>
+      <div className='productsBg'>
+         <h1 className='productsTl'>{storeName}</h1>
+         <div className='productsList'>
+            {
+               /* ¡Renderiza aquí todas tus cards! */
+               list.map((product, index) => { return <Card key={index} name={product.name} price={product.price} id={product.id} /> })
+            }
          </div>
-      </>
+      </div>
    )
 }
 

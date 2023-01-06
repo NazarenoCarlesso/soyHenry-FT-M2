@@ -4,8 +4,7 @@ const mapa = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105073.44367
 
 const CopyData = () => {
    const [number, setNumber] = React.useState('123-456-7890')
-
-   const numberRef = React.useRef(null)
+   const numberRef = React.useRef()
 
    const handleCopy = () => {
       let copyText = numberRef.current.lastChild.data
@@ -19,9 +18,9 @@ const CopyData = () => {
 
    return (
       <div className='copyBg'>
-         <button onClick={handleCopy}>Copy</button>
-         <div ref={numberRef}>
-            TELÉFONO: {number}
+         <div>
+            <button onClick={handleCopy}>Copy</button>
+            <div ref={numberRef}>TELÉFONO: {number}</div>
          </div>
          <iframe src={mapa} className='mapa' title="mapa" />
       </div>
